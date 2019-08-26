@@ -28,9 +28,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-//mongoose.connect("mongodb://localhost/mongoHeadlines", { useNewUrlParser: true });
-var MONGODB_URI = process.env.MONGODB_URI
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadLines";
 mongoose.connect(MONGODB_URI);
+
+const db = mongoose.connection;
 
 
 //Create Route to scrape articles from NY Times
